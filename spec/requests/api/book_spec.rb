@@ -5,13 +5,16 @@
             get 'List all available books' do
                 produces 'application/json'
                 response '200', 'books listed' do
-                    schema type: :object,
-                    properties: {
-                        name: { type: :string },
-                        author: { type: :string },
-                        price: { type: :integer }
-                    },
-                    required: ["name"]
+                    schema oneOf: [
+                        { type: :array },
+                        { type: :object,
+                            properties: {
+                                name: { type: :string },
+                                author: { type: :string },
+                                price: { type: :integer }
+                            },
+                            required: ["name"]}
+                    ]
 
                     run_test!
                 end
