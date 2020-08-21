@@ -5,7 +5,7 @@
             get 'List all available books' do
                 produces 'application/json'
                 response '200', 'books listed' do
-                    schema: :object,
+                    schema type: :object,
                     properties: {
                         name: { type: :string },
                         author: { type: :string },
